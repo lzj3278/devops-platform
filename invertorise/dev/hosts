@@ -1,0 +1,15 @@
+[all]
+jenkins
+hubot
+
+[jenkins]
+jenkins
+
+[rocketchat]
+hubot
+
+[mongodb]
+hubot
+
+[nginx]
+jenkins

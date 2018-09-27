@@ -57,36 +57,36 @@
   tags:
     - common
 
-- hostname: name={{ innerip | regex_replace('\.', '_')  }}
-  tags:
-    - common
+# - hostname: name={{ innerip | regex_replace('\.', '_')  }}
+#   tags:
+#     - common
 
 
-- name: Delete keys in sysadmin/.ssh/authoriezd_keys
-  lineinfile:
-    dest: "/etc/hosts"
-    state: absent
-    regexp: "{{ item }}"
-  with_items:
-    - "^127.0.0.1   localhost"
-    - '^::1'
-  tags:
-    - common
+# - name: Delete keys in sysadmin/.ssh/authoriezd_keys
+#   lineinfile:
+#     dest: "/etc/hosts"
+#     state: absent
+#     regexp: "{{ item }}"
+#   with_items:
+#     - "^127.0.0.1   localhost"
+#     - '^::1'
+#   tags:
+#     - common
 
 
-- name: update host
-  blockinfile:
-    backup: yes
-    dest: "/etc/hosts"
-    block: |
-      {{ hosts }}
-  when: hosts is defined
-  tags:
-    - common
+# - name: update host
+#   blockinfile:
+#     backup: yes
+#     dest: "/etc/hosts"
+#     block: |
+#       {{ hosts }}
+#   when: hosts is defined
+#   tags:
+#     - common
 
-- name: hostname to /etc/hosts
-  lineinfile: dest="/etc/hosts" line="{{innerip}} {{ ansible_hostname }} localhost"
-  ignore_errors: yes
-  # notify: add host to zabbix-server
-  tags:
-    - common
+# - name: hostname to /etc/hosts
+#   lineinfile: dest="/etc/hosts" line="{{innerip}} {{ ansible_hostname }} localhost"
+#   ignore_errors: yes
+#   # notify: add host to zabbix-server
+#   tags:
+#     - common

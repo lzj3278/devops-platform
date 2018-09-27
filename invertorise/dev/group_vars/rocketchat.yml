@@ -1,0 +1,11 @@
+---
+
+rocket_chat_nginx_listen_host: "{{ innerip }}"
+rocket_chat_nginx_listen_port: 3000
+rocket_chat_mongodb_server: "{{mongodb_server_ip}}"
+rocket_chat_mongodb_port: "{{mongodb_server_port}}"
+rocket_chat_service_host: "{{ innerip }}"
+rocket_chat_service_port: "5856"
+rocket_chat_domain_service_host: "{{ innerip }}"
+rocketchat_hubot_username: rocket.cat
+rocketchat_hubot_password: 123456
