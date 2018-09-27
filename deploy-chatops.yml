@@ -9,6 +9,7 @@
 
 - hosts: mongodb
   become: yes
+  roles:
      - role: mongodb
   tags:
      - mongodb
