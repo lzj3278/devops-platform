@@ -5,46 +5,46 @@
 # - include: ubuntu.yml
 #   when: ansible_distribution == "Ubuntu"
 
-- name: "create group if not exists"
-  group:
-    name: "{{usergroup}}"
-    state: present
-  tags:
-    - common
+# - name: "create group if not exists"
+#   group:
+#     name: "{{usergroup}}"
+#     state: present
+#   tags:
+#     - common
 
-- name: "check user is exists"
-  shell: "id {{username}} >& /dev/null"
-  register: user_exist
-  ignore_errors: true
-  tags:
-    - common
+# - name: "check user is exists"
+#   shell: "id {{username}} >& /dev/null"
+#   register: user_exist
+#   ignore_errors: true
+#   tags:
+#     - common
 
-- name: "create user if not exists"
-  user:
-    name: "{{username}}"
-    group: "{{usergroup}}"
-    append: yes
-    createhome: yes
-  when: user_exist != 0
-  tags:
-    - common
+# - name: "create user if not exists"
+#   user:
+#     name: "{{username}}"
+#     group: "{{usergroup}}"
+#     append: yes
+#     createhome: yes
+#   when: user_exist != 0
+#   tags:
+#     - common
 
-- stat:
-    path: /app
-  register: __app_folder
-  tags:
-    - common
+# - stat:
+#     path: /app
+#   register: __app_folder
+#   tags:
+#     - common
 
-- name: create app folder
-  file:
-    path: /app
-    state: directory
-    owner: "{{username}}"
-    group: "{{usergroup}}"
-    mode: "ug=rwx,o=rx"
-  when: __app_folder.stat.exists == False
-  tags:
-    - common
+# - name: create app folder
+#   file:
+#     path: /app
+#     state: directory
+#     owner: "{{username}}"
+#     group: "{{usergroup}}"
+#     mode: "ug=rwx,o=rx"
+#   when: __app_folder.stat.exists == False
+#   tags:
+#     - common
 
 - name: add /sbin to path
   lineinfile: dest="/etc/profile" line="{{item}}"

@@ -1,0 +1,15 @@
+---
+
+- hosts: linux
+  become: yes
+  roles:
+     - role: yum-config
+  tags:
+     - yum-config
+
+- hosts: linux
+  become: yes
+  roles:
+     - role: os-init
+  tags:
+     - os-init

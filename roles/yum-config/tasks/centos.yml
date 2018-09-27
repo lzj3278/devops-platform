@@ -18,16 +18,16 @@
   tags:
     - common
 
-- name: yum clean all and makecache
-  command: "{{item}}"
-  with_items:
-    - yum clean all
-    - yum update -y
-    # - yum makecache
-  args:
-    warn: no
-  tags:
-    - common
+# - name: yum clean all and makecache
+#   command: "{{item}}"
+#   with_items:
+#     - yum clean all
+#     - yum update -y
+#     # - yum makecache
+  # args:
+  #   warn: no
+  # tags:
+  #   - common
 
 - name: yum install
   yum:
