@@ -6,3 +6,9 @@
      - role: openresty
   tags:
      - openresty
+
+- hosts: mongodb
+  become: yes
+     - role: mongodb
+  tags:
+     - mongodb
