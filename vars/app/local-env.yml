@@ -6,10 +6,10 @@ jenkins_group: jenkins
 
 jenkins_admin_username: admin
 jenkins_admin_password: admin
-jenkins_url: "http://192.168.61.11/jenkins"
+jenkins_url: "http://192.168.104.37/jenkins"
 jenkins_agent_username: "{{jenkins_admin_username}}"
 jenkins_agent_password: "{{jenkins_admin_password}}"
-jenkins_agent_master: 192.168.61.11
+jenkins_agent_master: 192.168.104.37
 jenkins_agent_master_port: "8666/jenkins"
 
 
@@ -108,12 +108,12 @@ pintpoint_work_path: "/app/pinpoint-collector"
 
 ############################################################
 ####  nginx
-delegated_nginx_host: "192.168.61.14"
+delegated_nginx_host: "192.168.104.37"
 
 
 ############################################################
 ####  mongodb
-mongodb_server_ip: 192.168.61.15
+mongodb_server_ip: 192.168.104.36
 mongodb_server_port: 27017
 # mongodb_repl_lines: >-
 #   replication:
@@ -122,13 +122,13 @@ mongodb_server_port: 27017
 
 ##############################################################
 ### rocket-chat
-rocket_chat_nginx_listen_host: 192.168.61.14
+rocket_chat_nginx_listen_host: 192.168.104.36
 rocket_chat_nginx_listen_port: 3000
 rocket_chat_mongodb_server: "{{mongodb_server_ip}}"
 rocket_chat_mongodb_port: "{{mongodb_server_port}}"
-rocket_chat_service_host: "192.168.61.15"
+rocket_chat_service_host: "192.168.104.36"
 rocket_chat_service_port: "5856"
-rocket_chat_domain_service_host: "192.168.61.15"
+rocket_chat_domain_service_host: "192.168.104.36"
 rocketchat_hubot_username: rocket.cat
 rocketchat_hubot_password: 123456
 ############################################################
