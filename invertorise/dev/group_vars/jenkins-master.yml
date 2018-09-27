@@ -1,0 +1,12 @@
+---
+
+jenkins_user: jenkins
+jenkins_group: jenkins
+
+jenkins_admin_username: admin
+jenkins_admin_password: admin
+jenkins_url: "http://{{ innerip }}/jenkins"
+jenkins_agent_username: "{{jenkins_admin_username}}"
+jenkins_agent_password: "{{jenkins_admin_password}}"
+jenkins_agent_master: "{{ innerip }}"
+jenkins_agent_master_port: "8666/jenkins"

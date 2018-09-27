@@ -2,7 +2,7 @@
 jenkins
 hubot
 
-[jenkins]
+[jenkins-master]
 jenkins
 
 [rocketchat]
