@@ -80,7 +80,7 @@ hubot_description: "'A helpful chat robot'"
 
 hubot_node_packages:
   - cheerio
-  - hubot-rocketchat@1
+  - hubot-rocketchat
   - chrono-node
   - clark
   - htmlparser
