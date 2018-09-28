@@ -96,7 +96,7 @@
 
 - name: "copy rocket.chat-{{ rocket_chat_version }}.tar"
   copy:
-    src: "rocket.chat-{{ rocket_chat_version }}.tar"
+    src: "/trocket.chat-{{ rocket_chat_version }}.tar"
     dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
     owner: "{{ rocket_chat_service_user }}"
     group: "{{ rocket_chat_service_user }}"
@@ -158,19 +158,19 @@
     - rocketchat
 
 
-- name: Upgrade Rocket.Chat
-  include: upgrade.yml
-  when:
-    - result|changed
-    - rocket_chat_deploy_state.stat.exists
-  tags:
-    - rocketchat
+# - name: Upgrade Rocket.Chat
+#   include: upgrade.yml
+#   when:
+#     - result|changed
+#     - rocket_chat_deploy_state.stat.exists
+#   tags:
+#     - rocketchat
 
 
 
-- meta: flush_handlers
-  tags:
-    - rocketchat
+# - meta: flush_handlers
+#   tags:
+#     - rocketchat
 
 
 - name: Unpack the Rocket.Chat binary tarball
