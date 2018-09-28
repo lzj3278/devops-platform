@@ -37,8 +37,8 @@
 
 
 - name: Install Node Version Manager
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   git:
     repo: "https://github.com/creationix/nvm.git"
     dest: "{{ hubot_nvm_dir }}"
@@ -47,8 +47,8 @@
 
 
 - name: Install Node.js
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   shell: "source {{ hubot_nvm_dir }}/nvm.sh &&  npm --registry https://registry.npm.taobao.org install express && nvm install {{ hubot_node_version }}"
   args:
     creates: "{{ hubot_node_dir }}"
@@ -76,8 +76,8 @@
 
 # Doing things the hard way™ until above is fixed
 - name: Install hubot global dependencies
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   shell: "source {{ hubot_nvm_dir }}/nvm.sh &&  npm --registry https://registry.npm.taobao.org install express && nvm use {{ hubot_node_version }} && npm i -g {{ item }}"
   args:
     executable: /bin/bash
@@ -90,8 +90,8 @@
   tags: ansible-hubot
 
 - name: Assemble Hubot
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   shell: "source {{ hubot_nvm_dir }}/nvm.sh &&  npm --registry https://registry.npm.taobao.org install express && nvm use {{ hubot_node_version }} && echo 'n' | yo hubot --adapter={{ hubot_adapter }} --owner={{ hubot_owner }} --name={{ hubot_identity }} --description={{ hubot_description }} --defaults "
   args:
     chdir: "{{ hubot_dir }}"
@@ -120,8 +120,8 @@
 
 # Doing things the hard way™ until above is fixed
 - name: Install hubot Node dependencies
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   shell: "source {{ hubot_nvm_dir }}/nvm.sh && npm --registry https://registry.npm.taobao.org install express &&  nvm use {{ hubot_node_version }} && npm i {{ item }}"
   args:
     executable: /bin/bash
@@ -130,8 +130,8 @@
 
 
 - name: Define Hubot environment
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   template:
     src: hubot.env.j2
     dest: "{{ hubot_dir }}/{{ hubot_identity }}.env"
@@ -140,8 +140,8 @@
     - restart hubot
 
 - name: Install Hubot start script
-  become: True
-  become_user: "{{ hubot_admin }}"
+  # become: True
+  # become_user: "{{ hubot_admin }}"
   template:
     src: start-hubot.sh.j2
     dest: "{{ hubot_dir }}/bin/start-hubot"
@@ -149,7 +149,7 @@
   tags: ansible-hubot
 
 - name: Install custom Hubot scripts
-  become: False
+  # become: False
   copy:
     src: "scripts/{{ item }}"
     dest: "{{ hubot_dir }}/scripts/{{ item }}"
@@ -163,7 +163,7 @@
 
 
 - name: Install hubot external git scripts
-  become: False
+  # become: False
   git: "repo={{ item.repo_url }} version={{ item.version | default('master') }} dest={{ hubot_dir }}/node_modules/{{ item.name }}"
   with_items: "{{ hubot_external_git_scripts }}"
   when: hubot_external_git_scripts is defined
@@ -173,8 +173,8 @@
 
 
 - name: Configure Hubot external scripts
-  become: True
-  become_user: root
+  # become: True
+  # become_user: root
   template:
     src: external-scripts.json.j2
     dest: "{{ hubot_dir }}/external-scripts.json"
@@ -197,8 +197,8 @@
 
 
 - name: Hubot home ownership
-  become: True
-  become_user: root
+  # become: True
+  # become_user: root
   file:
     path: "{{ item }}"
     owner: "{{ hubot_admin }}"
@@ -209,8 +209,8 @@
 
 
 - name: Install service init script
-  become: True
-  become_user: root
+  # become: True
+  # become_user: root
   template:
     src: hubot.init.j2
     dest: /etc/init.d/hubot
@@ -222,8 +222,8 @@
   tags: ansible-hubot
 
 - name: Install Upstart script
-  become: True
-  become_user: root
+  # become: True
+  # become_user: root
   template:
     src: hubot.conf.j2
     dest: /etc/init/hubot.conf
@@ -236,8 +236,8 @@
 
 
 - name: Install systemd unit
-  become: True
-  become_user: root
+  # become: True
+  # become_user: root
   template:
     src: hubot.service.j2
     dest: /etc/systemd/system/hubot.service
