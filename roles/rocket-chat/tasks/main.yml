@@ -94,10 +94,10 @@
   tags:
     - rocketchat
 
-- name: "copy rocket.chat-{{ rocket_chat_version }}.tgz"
+- name: "copy rocket.chat-{{ rocket_chat_version }}.tar"
   copy:
-    src: "rocket.chat-{{ rocket_chat_version }}.tgz"
-    dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+    src: "rocket.chat-{{ rocket_chat_version }}.tar"
+    dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
     owner: "{{ rocket_chat_service_user }}"
     group: "{{ rocket_chat_service_user }}"
     mode: "ug=rwx,o=rx"
@@ -106,34 +106,34 @@
     - rocketchat
 
 
-- name: "state {{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+- name: "state {{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
   stat:
-    path: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+    path: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
   register:   __rocket_chat_application_path
   tags:
     - rocketchat
 
 
-- name: "Fetch the Rocket.Chat binary tarball from {{ rocket_chat_tarball_remote }}"
-  get_url:
-    url: "{{ rocket_chat_tarball_remote }}"
-    checksum: "{{ (rocket_chat_tarball_check_checksum == false) | ternary(omit, 'sha256: ' + rocket_chat_tarball_sha256sum) }}"
-    force: "{{ (rocket_chat_tarball_check_checksum == false) | ternary('yes', omit) }}"
-    dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
-    timeout: "{{ rocket_chat_tarball_fetch_timeout }}"
-    validate_certs: "{{ rocket_chat_tarball_validate_remote_cert }}"
-  # Temp fix for ansible/ansible#15915 ( Broken include in handlers )
-  # https://github.com/ansible/ansible/issues/15915
-  #notify: Upgrade Rocket.Chat
-  become: true
-  become_user: "{{ rocket_chat_service_user }}"
-  register: result
-  retries: 3
-  changed_when: (result|changed)
-                or (not rocket_chat_tarball_check_checksum)
-  when: __rocket_chat_application_path.stat.exists == False
-  tags:
-    - rocketchat
+# - name: "Fetch the Rocket.Chat binary tarball from {{ rocket_chat_tarball_remote }}"
+#   get_url:
+#     url: "{{ rocket_chat_tarball_remote }}"
+#     checksum: "{{ (rocket_chat_tarball_check_checksum == false) | ternary(omit, 'sha256: ' + rocket_chat_tarball_sha256sum) }}"
+#     force: "{{ (rocket_chat_tarball_check_checksum == false) | ternary('yes', omit) }}"
+#     dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+#     timeout: "{{ rocket_chat_tarball_fetch_timeout }}"
+#     validate_certs: "{{ rocket_chat_tarball_validate_remote_cert }}"
+#   # Temp fix for ansible/ansible#15915 ( Broken include in handlers )
+#   # https://github.com/ansible/ansible/issues/15915
+#   #notify: Upgrade Rocket.Chat
+#   become: true
+#   become_user: "{{ rocket_chat_service_user }}"
+#   register: result
+#   retries: 3
+#   changed_when: (result|changed)
+#                 or (not rocket_chat_tarball_check_checksum)
+#   when: __rocket_chat_application_path.stat.exists == False
+#   tags:
+#     - rocketchat
 
 - name: "Fetch the Rocket.Chat binary tarball from {{ rocket_chat_tarball_remote }} "
   get_url:
@@ -153,6 +153,7 @@
   retries: 2
   changed_when: (download_result | changed)
                   or (not (rocket_chat_tarball_check_checksum | bool))
+  when: __rocket_chat_application_path.stat.exists == False
   tags:
     - rocketchat
 
