@@ -13,6 +13,7 @@ jenkins_java_options_env_var: JAVA_ARGS
 
 jenkins_group: jenkins
 jenkins_user: jenkins
+JAVA_HOME: /usr/lib/jvm/java
 
 jenkins_war_version: 2.138.1
 jenkins_war_url: "https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/{{ jenkins_war_version }}/jenkins.war"
