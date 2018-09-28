@@ -14,7 +14,7 @@ jenkins_java_options_env_var: JAVA_ARGS
 jenkins_group: jenkins
 jenkins_user: jenkins
 
-jenkins_war_version: 2.46.3
+jenkins_war_version: 2.138.1
 jenkins_war_url: "https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/{{ jenkins_war_version }}/jenkins.war"
 jenkins_war_sha256sum: "6eb89e410b263a4c73028cc4e0165e8fd567c0a35df43d12ab4117a1fc86ad31 jenkins.war"
 jenkins_connection_delay: 5
