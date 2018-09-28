@@ -2,6 +2,7 @@
 
 rocket_chat_nginx_listen_host: "{{ innerip }}"
 rocket_chat_nginx_listen_port: 3000
+mongodb_server_ip: "{{innerip}}"
 rocket_chat_mongodb_server: "{{mongodb_server_ip}}"
 rocket_chat_mongodb_port: "{{mongodb_server_port}}"
 rocket_chat_service_host: "{{ innerip }}"
