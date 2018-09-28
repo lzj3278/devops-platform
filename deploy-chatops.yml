@@ -25,8 +25,29 @@
   become: yes
   roles:
      - jenkins
-    #  - openresty
      - jenkins-openresty-conf
   tags:
      - jenkins
+
+- hosts: hubot
+  become: yes
+  roles:
+     - ansible-role-nodejs
+  tags:
+     - nodejs
+
+- hosts: hubot
+  become: yes
+  roles:
+     - rocket-chat
+  tags:
+     - rocket-chat
+
+- hosts: hubot
+  become: yes
+  roles:
+     - ansible-hubot
+  tags:
+     - hubot
+
 
