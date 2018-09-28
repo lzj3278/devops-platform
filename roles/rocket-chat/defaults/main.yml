@@ -27,6 +27,11 @@ rocket_chat_mongodb_server: 127.0.0.1
 rocket_chat_mongodb_port: 27017
 mongodb_server_port: 27017
 
+rocket_chat_service_update_command: systemctl daemon-reload
+rocket_chat_service_template:
+  src: rocketchat.service.j2
+  dest: /usr/lib/systemd/system/rocketchat.service
+
 # nginx settings
 rocket_chat_include_nginx: true
 rocket_chat_ssl_generate_certs: false
