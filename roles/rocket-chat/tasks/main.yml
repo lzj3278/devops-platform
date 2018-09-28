@@ -256,7 +256,7 @@
   service:
     name: rocketchat
     state: restarted
-  when: rocket_chat_upgraded|bool
+  # when: rocket_chat_upgraded|bool
   tags:
     - rocketchat
 
