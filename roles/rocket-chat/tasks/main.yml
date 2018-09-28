@@ -229,7 +229,7 @@
     src: "{{ rocket_chat_service_template.src }}"
     dest: "{{ rocket_chat_service_template.dest }}"
   notify:
-    - Update the Rocket.Chat service configuration
+    # - Update the Rocket.Chat service configuration
     - Restart the Rocket.Chat service
   tags:
     - rocketchat
