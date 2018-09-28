@@ -191,8 +191,8 @@
     state: present
     path: "{{ rocket_chat_application_path }}/bundle/programs/server"
     executable: "{{ rocket_chat_node_orig_npm }}"
-  become: true
-  become_user: "{{ rocket_chat_service_user }}"
+  # become: true
+  # become_user: "{{ rocket_chat_service_user }}"
   tags:
     - rocketchat
 
