@@ -13,3 +13,13 @@
      - role: mongodb
   tags:
      - mongodb
+
+- hosts: jenkins-master
+  become: yes
+  roles:
+     - jdk8
+     - jenkins
+    #  - openresty
+     - jenkins-openresty-conf
+  tags:
+     - jenkins
