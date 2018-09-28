@@ -14,7 +14,7 @@ rocket_chat_service_user: rocketchat
 rocket_chat_service_group: rocketchat
 rocket_chat_service_host: "{{ innerip }}"
 rocket_chat_service_port: 3000
-rocket_chat_node_version: 8.9.4
+rocket_chat_node_version: 8.9.3
 rocket_chat_node_path: /usr/local/n/versions/node/{{ rocket_chat_node_version }}/bin
 rocket_chat_node_orig_npm: /usr/bin/npm
 
@@ -25,6 +25,7 @@ rocket_chat_file_upload_folder: /rocket_chat_file
 # MongoDB settings
 rocket_chat_mongodb_server: 127.0.0.1
 rocket_chat_mongodb_port: 27017
+mongodb_server_port: 27017
 
 # nginx settings
 rocket_chat_include_nginx: true
