@@ -18,8 +18,15 @@
   become: yes
   roles:
      - jdk8
+  tags:
+     - jdk
+
+- hosts: jenkins-master
+  become: yes
+  roles:
      - jenkins
     #  - openresty
      - jenkins-openresty-conf
   tags:
      - jenkins
+
