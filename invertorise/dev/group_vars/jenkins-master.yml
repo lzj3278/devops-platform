@@ -10,3 +10,7 @@ jenkins_agent_username: "{{jenkins_admin_username}}"
 jenkins_agent_password: "{{jenkins_admin_password}}"
 jenkins_agent_master: "{{ innerip }}"
 jenkins_agent_master_port: "8666/jenkins"
+
+
+nginx_conf_path: /usr/local/nginx/nginx/conf
+nginx_servers_conf_path: "{{nginx_conf_path}}/servers"
