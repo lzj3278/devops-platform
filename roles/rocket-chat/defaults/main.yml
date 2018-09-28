@@ -4,8 +4,8 @@ rocket_chat_automatic_upgrades: false
 rocket_chat_upgrade_backup: true
 rocket_chat_upgrade_backup_path: "{{ rocket_chat_application_path }}"
 rocket_chat_application_path: /var/lib/rocket.chat
-rocket_chat_version: "0.59.0-rc.5"
-rocket_chat_tarball_remote: https://rocket.chat/releases/{{ rocket_chat_version }}/download
+rocket_chat_version: latest
+rocket_chat_tarball_remote: https://releases.rocket.chat/{{ rocket_chat_version }}/download
 rocket_chat_tarball_sha256sum: f87ad01656e345c1f0e5c449e09c33d5819912e96b080eb2a93935de772726c1.
 rocket_chat_tarball_check_checksum: false
 rocket_chat_tarball_fetch_timeout: 100
@@ -14,7 +14,7 @@ rocket_chat_service_user: rocketchat
 rocket_chat_service_group: rocketchat
 rocket_chat_service_host: "{{ innerip }}"
 rocket_chat_service_port: 3000
-rocket_chat_node_version: 6.14.3
+rocket_chat_node_version: 8.9.4
 rocket_chat_node_path: /usr/local/n/versions/node/{{ rocket_chat_node_version }}/bin
 rocket_chat_node_orig_npm: /usr/bin/npm
 
