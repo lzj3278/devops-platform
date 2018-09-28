@@ -120,8 +120,8 @@
 
 # Doing things the hard way™ until above is fixed
 - name: Install hubot Node dependencies
-  # become: True
-  # become_user: "{{ hubot_admin }}"
+  become: True
+  become_user: root
   shell: "source {{ hubot_nvm_dir }}/nvm.sh && npm --registry https://registry.npm.taobao.org install express &&  nvm use {{ hubot_node_version }} && npm i --save  {{ item }}"
   args:
     chdir: "{{ hubot_dir }}"
@@ -131,8 +131,8 @@
 
 
 - name: Define Hubot environment
-  # become: True
-  # become_user: "{{ hubot_admin }}"
+  become: True
+  become_user: root
   template:
     src: hubot.env.j2
     dest: "{{ hubot_dir }}/{{ hubot_identity }}.env"
@@ -141,8 +141,8 @@
     - restart hubot
 
 - name: Install Hubot start script
-  # become: True
-  # become_user: "{{ hubot_admin }}"
+  become: True
+  become_user: root
   template:
     src: start-hubot.sh.j2
     dest: "{{ hubot_dir }}/bin/start-hubot"
