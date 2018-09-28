@@ -179,8 +179,8 @@
     src: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
     dest: "{{ rocket_chat_application_path }}"
     creates: "{{ rocket_chat_application_path }}/bundle"
-  become: true
-  become_user: "{{ rocket_chat_service_user }}"
+    owner: "{{ rocket_chat_service_user }}"
+    group: "{{ rocket_chat_service_group }}"
   tags:
     - rocketchat
 
