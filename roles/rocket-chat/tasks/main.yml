@@ -119,7 +119,7 @@
 #     url: "{{ rocket_chat_tarball_remote }}"
 #     checksum: "{{ (rocket_chat_tarball_check_checksum == false) | ternary(omit, 'sha256: ' + rocket_chat_tarball_sha256sum) }}"
 #     force: "{{ (rocket_chat_tarball_check_checksum == false) | ternary('yes', omit) }}"
-#     dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+#     dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
 #     timeout: "{{ rocket_chat_tarball_fetch_timeout }}"
 #     validate_certs: "{{ rocket_chat_tarball_validate_remote_cert }}"
 #   # Temp fix for ansible/ansible#15915 ( Broken include in handlers )
@@ -140,7 +140,7 @@
     url: "{{ rocket_chat_tarball_remote }}"
     checksum: "{{ (rocket_chat_tarball_check_checksum == false) | ternary(omit, 'sha256: ' + (rocket_chat_tarball_sha256sum|string)) }}"
     force: yes
-    dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+    dest: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
     timeout: "{{ rocket_chat_tarball_fetch_timeout }}"
     validate_certs: "{{ rocket_chat_tarball_validate_remote_cert }}"
     owner: "{{ rocket_chat_service_user }}"
@@ -176,7 +176,7 @@
 - name: Unpack the Rocket.Chat binary tarball
   unarchive:
     copy: false
-    src: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tgz"
+    src: "{{ rocket_chat_application_path }}/rocket.chat-{{ rocket_chat_version }}.tar"
     dest: "{{ rocket_chat_application_path }}"
     creates: "{{ rocket_chat_application_path }}/bundle"
     owner: "{{ rocket_chat_service_user }}"
