@@ -24,7 +24,8 @@ hubot_node_version: 8.12.0
 
 hubot_admin_dir: "/home/{{ hubot_admin }}"
 
-hubot_dir: "{{ hubot_admin_dir }}/hubot"
+# hubot_dir: "{{ hubot_admin_dir }}/hubot"
+hubot_dir: "/opt/myhubot"
 
 hubot_nvm_dir: "{{ hubot_admin_dir }}/.nvm"
 
