@@ -142,14 +142,14 @@
   notify:
     - restart hubot
 
-# - name: Install Hubot start script
-#   become: True
-#   become_user: root
-#   template:
-#     src: start-hubot.sh.j2
-#     dest: "{{ hubot_dir }}/bin/start-hubot"
-#     mode: "0744"
-#   tags: ansible-hubot
+- name: Install Hubot start script
+  become: True
+  become_user: root
+  template:
+    src: start-hubot.sh.j2
+    dest: "{{ hubot_dir }}/bin/start-hubot"
+    mode: "0744"
+  tags: ansible-hubot
 
 - name: Install custom Hubot scripts
   # become: False
@@ -224,18 +224,18 @@
     - restart hubot
   tags: ansible-hubot
 
-- name: Install Upstart script
-  become: True
-  become_user: root
-  template:
-    src: hubot.conf.j2
-    dest: /etc/init/hubot.conf
-    mode: "0755"
-  when: (ansible_os_family == "Debian" and ansible_distribution_major_version < "15")
-  notify:
-    - enable hubot
-    - restart hubot
-  tags: ansible-hubot
+# - name: Install Upstart script
+#   become: True
+#   become_user: root
+#   template:
+#     src: hubot.conf.j2
+#     dest: /etc/init/hubot.conf
+#     mode: "0755"
+#   when: (ansible_os_family == "Debian" and ansible_distribution_major_version < "15")
+#   notify:
+#     - enable hubot
+#     - restart hubot
+#   tags: ansible-hubot
 
 
 - name: Install systemd unit

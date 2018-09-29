@@ -131,10 +131,10 @@ hubot_external_scripts:
 #
 #############################################################################
 
-# hubot_custom_scripts:
-#   - caseofmondays.coffee
-#   - dogatcomputer.coffee
-#   - ignoreme.coffee
+hubot_custom_scripts:
+  - caseofmondays.coffee
+  - dogatcomputer.coffee
+  - ignoreme.coffee
 
 #############################################################################
 #
