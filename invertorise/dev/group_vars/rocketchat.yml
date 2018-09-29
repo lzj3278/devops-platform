@@ -10,3 +10,12 @@ rocket_chat_service_port: "5856"
 rocket_chat_domain_service_host: "{{ innerip }}"
 rocketchat_hubot_username: rocket.cat
 rocketchat_hubot_password: 123456
+
+
+jenkins_admin_username: admin
+jenkins_admin_password: admin
+jenkins_url: "http://{{ innerip }}/jenkins"
+jenkins_agent_username: "{{jenkins_admin_username}}"
+jenkins_agent_password: "{{jenkins_admin_password}}"
+jenkins_agent_master: "{{ innerip }}"
+jenkins_agent_master_port: "8666/jenkins"
